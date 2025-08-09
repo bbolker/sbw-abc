@@ -17,7 +17,10 @@ st_switch <- function(st.obj, ll = TRUE) {
 }
 
 ## Create arrow for trajectory (HYSPLIT) dataset
-rs.all <- open_dataset('data/res_simul_all_ws.parquet')
+hysplit_dat <- 'data/res_simul_all_ws.parquet'
+if (file.exists(hysplit_dat)) {
+  rs.all <- open_dataset(hysplit_dat)
+}
 
 l2.orig <- read_sf('data/L2.dbf') 
 ll.crs <- st_crs(l2.orig)
